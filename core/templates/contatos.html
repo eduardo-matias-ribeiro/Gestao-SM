@@ -1,10 +1,25 @@
+{% load bootstrap5 %}
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Contatos</title>
+    <title>{% block title %}Os Mídias{% endblock %}</title>
+    {% bootstrap_css %}
 </head>
 <body>
+    <div class="container">
+        <h1>Contato</h1>
+        {% bootstrap_messages %}
 
+        <form action="{% url 'contatos' %}" method="post" class="form" autocomplete="off">
+            {% csrf_token %}
+            {% bootstrap_form form %}
+            {% buttons %}
+                <button type="submit" class="btn btn-primary">Enviar</button>
+            {% endbuttons %}
+        </form>
+    </div>
+
+{% bootstrap_javascript %}
 </body>
 </html>
